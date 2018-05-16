@@ -29,17 +29,19 @@ file_name = current_path + '/my_expenses.xml'
 f = File.new(file_name, 'r:UTF-8')
 
 begin
-doc = REXML::Document.new(f)
+  doc = REXML::Document.new(f)
 rescue REXML::ParseException => e
-  end
+  puts 'XML-файл битый'
+  abort e.message
+end
 f.close
 
 expenses = doc.elements.find('expenses').first
 expense = expenses.add_element 'expense', {
-                         'amount' => expense_amount,
-                         'category' => expense_category,
-                         'date' => expense_date.to_s
-                              }
+    'amount' => expense_amount,
+    'category' => expense_category,
+    'date' => expense_date.to_s
+}
 
 expense.text = expense_text
 

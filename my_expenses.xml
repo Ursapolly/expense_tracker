@@ -1,13 +1,13 @@
-<?xml version='1.0' encoding='UTF-8'?> 
+<?xml version='1.0' encoding='UTF-8'?>
 <expenses>
   <expense date='15.5.2018' category='Образование' amount='900'>
-     Книга по Ruby on Rails 
+    Книга по Ruby on Rails
   </expense>
   <expense date='16.5.2018' category='Еда' amount='144'>
-     Кофе 
+    Кофе
   </expense>
   <expense amount='144' category='еда' date='2018-05-16'>
-     кофе 
+    кофе
   </expense>
   <expense amount='567' category='книги' date='2018-05-16'>
     книга &quot;умай медленно, решай быстро&quot;
