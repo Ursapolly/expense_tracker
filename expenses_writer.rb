@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 require 'rexml/document'
 require 'date'
 
@@ -12,13 +10,11 @@ expense_amount = STDIN.gets.chomp.to_i
 puts 'Когда потрачено? (дата в формате ДД.ММ.ГГГГ, пустое поле – сегодня)'
 date_input = STDIN.gets.chomp
 
-expense_date = nil
-
-if date_input == ''
-  expense_date = Date.today
+expense_date = if date_input == ''
+  Date.today
 else
-  expense_date = Date.parse(date_input)
-end
+  Date.parse(date_input)
+               end
 
 puts 'В какую категорию занести трату?'
 expense_category = STDIN.gets.chomp
@@ -37,11 +33,10 @@ end
 f.close
 
 expenses = doc.elements.find('expenses').first
-expense = expenses.add_element 'expense', {
-    'amount' => expense_amount,
-    'category' => expense_category,
-    'date' => expense_date.to_s
-}
+expense = expenses.add_element 'expense',
+                               'amount' => expense_amount,
+                               'category' => expense_category,
+                               'date' => expense_date.to_s
 
 expense.text = expense_text
 
@@ -50,4 +45,3 @@ doc.write(f, 2)
 f.close
 
 puts 'Запись сохранена!'
-
